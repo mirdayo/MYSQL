@@ -1,0 +1,22 @@
+DB확인  : show databases;
+Tbl확인 : show tables;
+Source가져오기 : source sql파일명
+Tbl구조 : desc 테이블명
+삽입	: insert into 테이블명(열1,열2...) values(값1,값2...);
+수정	: update 테이블명 set 열이름=값,열이름=값 where 열이름=값;
+삭제	: delete from 테이블명 where 열이름=값;
+조회	: select * from 테이블명;
+
+DB 생성 : create database 테이터베이스명;
+Tbl생성 : create table 테이블명(열1 자료형 [제약조건],열2 자료형 [제약조건]..);
+Tbl구조 변경 : [열추가] alter table 테이블명 add column 열이름 자료형 [제약조건] [after 열이름]
+Tbl구조 변경 : [열변경] alter table 테이블명 change column 기존열이름 바꿀열이름 자료형 [제약조건]
+Tbl구조 변경 : [열삭제] alter table 테이블명 drop column 열이름
+
+Tbl삭제 : 
+
+DB 삭제 : drop DB명;
+Tbl삭제 : drop 테이블명
+
+접속하기 : 
+mysql -u 유저명 -p -h ServerIP
