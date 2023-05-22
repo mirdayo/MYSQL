@@ -1,0 +1,123 @@
+------------------------------------------
+MYSQL 권한부여 localhost
+------------------------------------------
+
+-----------------------
+사용자 계정 확인
+-----------------------
+use mysql;
+show tables;
+select user,host from user;
+
+-----------------------
+사용자 계정 추가
+-----------------------
+-----------
+로컬전용계정
+-----------
+create user user10@localhost identified by 'bsit@COM'; 	// 로컬접속 유저
+create user user20@localhost identified by 'bsit@COM'; 	// 로컬접속 유저
+
+flush privileges;					// 변경내용 적용
+
+
+-----------
+외부접속허용
+-----------
+create user user30@'%' identified by 'bsit@COM';	// 외부접근 허용 유저
+create user user40@'%' identified by 'bsit@COM';	// 외부접근 허용 유저
+flush privileges;					// 변경내용 적용
+
+
+
+
+
+-----------------------
+사용자 계정 삭제 
+-----------------------
+drop user user10@localhost;
+delete from user where user='user20';
+
+
+-----------------------
+사용자에게 DB 권한 부여
+-----------------------
+-----------
+계정 추가
+-----------
+create user user10@'%' identified by 'bsit@COM';
+create user user20@'%' identified by 'bsit@COM';
+
+-----------
+읽기
+-----------
+grant select on test1.* to user10@'%';
+flush privileges;
+
+-----------
+쓰기
+-----------
+grant select,insert on test1.* to user20@'%';
+flush privileges;
+
+-----------
+수정
+-----------
+grant select,insert,update on test.% to user30@'%';
+flush privileges;
+
+-----------
+모든권한
+-----------
+grant all privileges on test1.* to user40@'%';
+flush privileges;
+
+
+-----------
+권한 확인
+-----------
+show grants for user10@'%';
+show grants for user20@'%';
+show grants for user30@'%';
+show grants for user40@'%';
+
+-----------------------
+사용자에게 DB 권한 제거
+-----------------------
+revoke all on DB명.테이블명 from 사용자ID;
+
+-----------
+제거
+-----------
+revoke all on test1.* from  user10@localhost;
+
+-----------
+확인
+-----------
+show grants for user10@'%';
+
+
+------------------------------------------
+원격 접속 관리  
+------------------------------------------
+-----------------------
+사용자 계정 추가
+-----------------------
+-생략-
+
+기존계정 
+create user user20@'%' identified by 'bsit@COM';	// select,insert	
+create user user30@'%' identified by 'bsit@COM';	// select,insert,update
+create user user40@'%' identified by 'bsit@COM';	// all privileges
+
+
+-----------------------
+DB 접속 
+-----------------------
+-----------
+실행
+-----------
+실행창 -> cmd -> cd c:\program files\MariaDB10.2.7/bin\ -> 
+mysql -h 192.168.1.10 -u user40 -p  --port 3306
+
+

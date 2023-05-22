@@ -1,0 +1,16 @@
+Root접속 후 CMD 로 작업합니다
+- User10DB,User20DB,User30DB,User40DB 생성
+- user10,user20,user30,user40 @localhost 계정 생성
+- user10은 User10DB에 대해서 Create권한 부여
+- user20은 User20DB에 대해서 Create,Select권한 부여
+- user30은 User30DB에 대해서 Create,Select,Insert,Update 권한 부여
+- user40은 User40DB에 대해서 모든 권한 부여
+
+[명령어]
+create user 계정명@접속위치 identified by '패스워드';
+show grants for 계정명@접속위치;
+grant 명령어,명령어... on DB명.Table명 to 계정명@접속위치;
+
+
+
+

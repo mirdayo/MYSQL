@@ -1,0 +1,1 @@
+insert into tbl_customer(id, name, addr, phone) values('eee', '¸ô·ç', '¸Ó±¸', '010-555-7777');
